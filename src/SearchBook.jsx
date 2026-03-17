@@ -5,7 +5,7 @@ const SearchBook = () => {
     <div className="search-books">
       <div className="search-books-bar">
         <Link className="close-search" to="/">
-          Close
+          Close now
         </Link>
         <div className="search-books-input-wrapper">
           <input type="text" placeholder="Search by title, author, or ISBN" />
