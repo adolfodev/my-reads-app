@@ -32,7 +32,7 @@ const Book = ({ book, updateBookState}) => {
         </div>
       </div>
       <div className="book-title">{book.title}</div>
-      {book?.authors.map((author) => {
+      {book?.authors?.map((author) => {
         return <div className="book-authors">{author}</div>;
       })}
     </div>

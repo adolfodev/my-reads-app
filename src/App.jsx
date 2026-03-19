@@ -15,7 +15,6 @@ function App() {
   };
 
   const updateBookState = async (book, shelf) => {
-    console.log(shelf);
     await BooksAPI.update(book, shelf);
     await getBooks();
   };
@@ -34,9 +33,9 @@ function App() {
                 }
             />
             <Route
-                path="/create"
+                path="/search"
                 element={
-                    <SearchBook />
+                    <SearchBook updateBookState={updateBookState}/>
                 }
             />
         </Routes>

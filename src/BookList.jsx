@@ -32,7 +32,7 @@ const BookList = ({books, updateBookState}) => {
             </div>
           </div>
           <div className="open-search">
-            <Link className="open-search" to="/create">
+            <Link className="open-search" to="/search">
                 Add a book
             </Link>
           </div>
