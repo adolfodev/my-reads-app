@@ -8,7 +8,7 @@ const BookSection = ({ title, books, updateBookState }) => {
         <ol className="books-grid">
           {books.map((book) => {
             return (
-              <li>
+              <li key={book.id}>
                 <Book book={book} updateBookState={updateBookState}/>
               </li>
             );

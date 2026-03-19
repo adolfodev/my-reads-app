@@ -19,13 +19,13 @@ const Book = ({ book, updateBookState}) => {
           }}
         ></div>
         <div className="book-shelf-changer">
-          <select onChange={changeShelf}>
-            <option value="none" disabled selected>
+          <select onChange={changeShelf} defaultValue="none">
+            <option value="none" disabled>
               Move to...
             </option>
             {
               Object.values(STATES_OF_BOOKS).map(state => {
-                return (<option value={state.shelf}>{state.title}</option>)
+                return (<option key={state.shelf} value={state.shelf}>{state.title}</option>)
               })
             }
           </select>
@@ -33,7 +33,7 @@ const Book = ({ book, updateBookState}) => {
       </div>
       <div className="book-title">{book.title}</div>
       {book?.authors?.map((author) => {
-        return <div className="book-authors">{author}</div>;
+        return <div key={author} className="book-authors">{author}</div>;
       })}
     </div>
   );

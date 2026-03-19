@@ -9,7 +9,7 @@ const SearchBook = ({updateBookState}) => {
   
     const searchBook = async (searchQuery) => {
        const res = await BooksAPI.search(searchQuery,10);
-       setFoundBooks(res ?? []); 
+       setFoundBooks(Array.isArray(res) || []); 
     }
     
   
