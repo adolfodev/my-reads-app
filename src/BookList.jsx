@@ -1,4 +1,5 @@
 import "./App.css";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BookSection from "./BookSection.jsx";
 import { STATES_OF_BOOKS } from "./Constants.js";
@@ -39,4 +40,16 @@ const BookList = ({books, updateBookState}) => {
         </div>
       )
 }
+
+BookList.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      shelf: PropTypes.string,
+    })
+  ).isRequired,
+  updateBookState: PropTypes.func.isRequired,
+};
+
 export default BookList;

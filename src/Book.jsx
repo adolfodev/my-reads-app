@@ -1,5 +1,7 @@
 import "./App.css";
+import PropTypes from "prop-types";
 import { STATES_OF_BOOKS } from "./Constants.js";
+
 const Book = ({ book, updateBookState}) => {
   const changeShelf = (e) => {
     const shelf = e.target.value;
@@ -38,4 +40,18 @@ const Book = ({ book, updateBookState}) => {
     </div>
   );
 };
+
+Book.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string),
+    imageLinks: PropTypes.shape({
+      thumbnail: PropTypes.string,
+    }),
+    shelf: PropTypes.string,
+  }).isRequired,
+  updateBookState: PropTypes.func.isRequired,
+};
+
 export default Book;

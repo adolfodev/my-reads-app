@@ -1,5 +1,7 @@
 import "./App.css";
+import PropTypes from "prop-types";
 import Book from "./Book.jsx";
+
 const BookSection = ({ title, books, updateBookState }) => {
   return (
     <div className="bookshelf">
@@ -17,6 +19,17 @@ const BookSection = ({ title, books, updateBookState }) => {
       </div>
     </div>
   );
+};
+
+BookSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  updateBookState: PropTypes.func.isRequired,
 };
 
 export default BookSection;
