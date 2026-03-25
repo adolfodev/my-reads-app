@@ -21,7 +21,7 @@ const Book = ({ book, updateBookState}) => {
           }}
         ></div>
         <div className="book-shelf-changer">
-          <select onChange={changeShelf} defaultValue="none">
+          <select onChange={changeShelf} value={book.shelf || "none"}>
             <option value="none" disabled>
               Move to...
             </option>
