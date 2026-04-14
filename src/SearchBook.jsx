@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BookSection from "./BookSection";
 import * as BooksAPI from "./BooksAPI.js";
 
-const SearchBook = ({updateBookState}) => {
+const SearchBook = ({books, updateBookState}) => {
   const [query, setQuery] = useState("");
   const [foundBooks, setFoundBooks] = useState([]);
   
@@ -17,7 +17,15 @@ const SearchBook = ({updateBookState}) => {
     const debounceTimer = setTimeout(() => {
       BooksAPI.search(query.trim(), 10)
         .then((res) => {
-          setFoundBooks(Array.isArray(res) ? res : []);
+          if (Array.isArray(res)) {
+            const booksWithShelf = res.map(searchBook => {
+              const matchedBook = books.find(book => book.id === searchBook.id);
+              return matchedBook ? { ...searchBook, shelf: matchedBook.shelf } : { ...searchBook, shelf: 'none' };
+            });
+            setFoundBooks(booksWithShelf);
+          } else {
+            setFoundBooks([]);
+          }
         })
         .catch(() => {
           setFoundBooks([]);
@@ -57,6 +65,11 @@ const SearchBook = ({updateBookState}) => {
 };
 
 SearchBook.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   updateBookState: PropTypes.func.isRequired,
 };
 

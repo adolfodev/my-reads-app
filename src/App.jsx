@@ -35,7 +35,7 @@ function App() {
             <Route
                 path="/search"
                 element={
-                    <SearchBook updateBookState={updateBookState}/>
+                    <SearchBook books={books} updateBookState={updateBookState}/>
                 }
             />
         </Routes>
