@@ -26,10 +26,11 @@ const Book = ({ book, updateBookState}) => {
               Move to...
             </option>
             {
-              Object.values(STATES_OF_BOOKS).map(state => {
+              Object.values(STATES_OF_BOOKS).filter(state => state.shelf !== "none").map(state => {
                 return (<option key={state.shelf} value={state.shelf}>{state.title}</option>)
               })
             }
+            <option value="none">None</option>
           </select>
         </div>
       </div>
