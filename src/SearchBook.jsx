@@ -20,7 +20,10 @@ const SearchBook = ({books, updateBookState}) => {
           if (Array.isArray(res)) {
             const booksWithShelf = res.map(searchBook => {
               const matchedBook = books.find(book => book.id === searchBook.id);
-              return matchedBook ? { ...searchBook, shelf: matchedBook.shelf } : { ...searchBook, shelf: 'none' };
+              return { 
+                ...searchBook,
+                shelf: matchedBook ? matchedBook.shelf : 'none'
+              };
             });
             setFoundBooks(booksWithShelf);
           } else {
