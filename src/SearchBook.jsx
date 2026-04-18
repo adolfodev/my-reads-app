@@ -37,6 +37,18 @@ const SearchBook = ({books, updateBookState}) => {
     
     return () => clearTimeout(debounceTimer);
   }, [query]);
+
+  useEffect(() => {
+    setFoundBooks(prevBooks =>
+      prevBooks.map(searchBook => {
+        const matchedBook = books.find(book => book.id === searchBook.id);
+        return {
+          ...searchBook,
+          shelf: matchedBook ? matchedBook.shelf : 'none'
+        };
+      })
+    );
+  }, [books]);
   
   const updateQuery = (queryValue) => {
     setQuery(queryValue);
